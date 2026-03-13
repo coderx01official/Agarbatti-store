@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patna Ke Prachin Agarbatti | 35+ Years Legacy</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ----- global styles ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background: #fef8e7;
+            color: #2e241f;
+            line-height: 1.5;
+        }
+
+        /* ----- INTRO OVERLAY ANIMATION ----- */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2e1f0e; /* deep warm brown */
+            background: radial-gradient(circle at 30% 30%, #5a3e23, #221707);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease, visibility 1s ease;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .intro-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .intro-content {
+            text-align: center;
+            color: #ffefcf;
+            max-width: 700px;
+            padding: 2rem;
+            animation: floatGlow 2.2s infinite alternate ease-in-out;
+        }
+
+        .intro-content i {
+            font-size: 6rem;
+            color: #e5b96b;
+            filter: drop-shadow(0 0 15px #ffbe5c);
+            animation: rotateSmoke 3s infinite;
+        }
+
+        .intro-content h1 {
+            font-size: 4rem;
+            margin: 1rem 0 0.5rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px #f3c26b, 2px 2px 0 #402d12;
+            animation: flicker 2.5s infinite;
+        }
+
+        .intro-content p {
+            font-size: 1.8rem;
+            font-style: italic;
+            border-top: 2px solid #b7905a;
+            padding-top: 1rem;
+            display: inline-block;
+            animation: slideUp 1.2s ease-out;
+        }
+
+        .intro-content .sub {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            opacity: 0.9;
+            animation: delayedFade 2s;
+        }
+
+        .intro-content .loader {
+            width: 60px;
+            height: 60px;
+            margin: 30px auto 0;
+            border: 6px solid #f6e2b9;
+            border-top: 6px solid #c28a3b;
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+        }
+
+        /* keyframes for intro */
+        @keyframes floatGlow {
+            0% { transform: translateY(0); text-shadow: 0 0 10px #ffd27f; }
+            100% { transform: translateY(-15px); text-shadow: 0 0 30px #ffae3c; }
+        }
+        @keyframes rotateSmoke {
+            0% { transform: rotate(0deg) scale(1); opacity: 0.9; }
+            50% { transform: rotate(8deg) scale(1.08); opacity: 1; }
+            100% { transform: rotate(-8deg) scale(1); opacity: 0.9; }
+        }
+        @keyframes flicker {
+            0% { opacity: 1; }
+            25% { opacity: 0.9; text-shadow: 0 0 25px #f5c481; }
+            50% { opacity: 1; }
+            75% { opacity: 0.95; }
+            100% { opacity: 1; }
+        }
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes delayedFade {
+            0% { opacity: 0; }
+            70% { opacity: 0; }
+            100% { opacity: 0.9; }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ----- rest of the original styles (keep everything) ----- */
+        .header {
+            background: #8b5a2b;
+            background: linear-gradient(145deg, #6b4a2c 0%, #9b6e3e 100%);
+            color: #faeacb;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #d4a259;
+        }
+
+        .logo-area h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-shadow: 2px 2px 0 #3d2b15;
+        }
+
+        .logo-area p {
+            font-size: 1rem;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .logo-area p i {
+            color: #ffd966;
+        }
+
+        .legacy-badge {
+            background: #c9a76b;
+            color: #2d1f0c;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.4rem;
+            border: 2px solid #f5e2b6;
+            box-shadow: 0 0 0 3px #7a5833;
+            white-space: nowrap;
+        }
+
+        .legacy-badge i {
+            margin-right: 6px;
+            color: #522d0a;
+        }
+
+        .intro-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+            background-attachment: fixed;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem 1rem;
+            border-bottom: 8px solid #b88b4a;
+        }
+
+        .intro-content-text {
+            max-width: 800px;
+            background: rgba(45, 30, 15, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 2.2rem 2rem;
+            border-radius: 60px 20px 60px 20px;
+            border: 2px solid #e9c891;
+        }
+
+        .intro-content-text h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 3px 3px 0 #2b1a09;
+        }
+
+        .intro-content-text .highlight {
+            color: #ffd966;
+            font-size: 2.2rem;
+            display: block;
+        }
+
+        .intro-content-text p {
+            font-size: 1.3rem;
+            margin: 1rem 0 0;
+            font-weight: 400;
+            border-top: 2px dashed #e9c891;
+            padding-top: 1rem;
+        }
+
+        .intro-content-text i {
+            margin: 0 6px;
+            color: #f1c40f;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin: 2.5rem 0 1rem;
+            color: #4a3722;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: "🍂 35+ varsha ki visheshta 🍂";
+            display: block;
+            font-size: 1.2rem;
+            color: #aa7c4a;
+            letter-spacing: 2px;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            padding: 2rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #fffcf0;
+            border-radius: 30px 10px 30px 10px;
+            box-shadow: 0 12px 24px -8px rgba(105, 65, 30, 0.3);
+            padding: 1.5rem 1rem 1.8rem;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #efd6ae;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 28px -6px #6b4a2c;
+            border-color: #b27d44;
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            color: #9b6e3e;
+            background: #f7ead4;
+            width: 100px;
+            height: 100px;
+            line-height: 100px !important;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            box-shadow: 0 6px 0 #6b4a2c;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0.5rem 0 0.2rem;
+            color: #3b2b18;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #735f48;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        .price {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: #b6581e;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .price small {
+            font-size: 0.9rem;
+            color: #6f4e2b;
+        }
+
+        .add-to-cart-btn {
+            background: #d48b3c;
+            border: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 5px 0 #784e1f;
+            border: 1px solid #fad393;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #b8732a;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #5f3d19;
+        }
+
+        .add-to-cart-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #5f3d19;
+        }
+
+        .cart-panel {
+            background: #f3e5cc;
+            border-top: 6px solid #aa7c4a;
+            border-bottom: 6px solid #aa7c4a;
+            padding: 2rem 2rem 2.5rem;
+            margin: 2rem 2rem 3rem;
+            border-radius: 60px 60px 30px 30px;
+            box-shadow: inset 0 0 0 2px #fcf3df, 0 12px 20px -8px #3f2e1b;
+        }
+
+        .cart-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 2.2rem;
+            color: #3f2b16;
+            border-bottom: 3px dotted #b48b50;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .cart-header i {
+            background: #b27d44;
+            color: #fcf0d5;
+            padding: 12px;
+            border-radius: 50%;
+        }
+
+        #cart-items-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            max-height: 340px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff3de;
+            padding: 0.6rem 1.5rem 0.6rem 1rem;
+            border-radius: 50px;
+            border-left: 8px solid #d4984b;
+            box-shadow: 0 2px 6px rgba(78, 52, 25, 0.2);
+            font-size: 1.1rem;
+        }
+
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            min-width: 140px;
+        }
+
+        .cart-item-price {
+            background: #2b421b;
+            color: #f6edd8;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .cart-item-qty {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .qty-btn {
+            background: #d3a668;
+            border: none;
+            color: #261903;
+            font-weight: bold;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 2px 0 #684c28;
+            transition: 0.1s;
+        }
+
+        .qty-btn:hover {
+            background: #b58442;
+        }
+
+        .remove-item {
+            background: transparent;
+            border: 2px solid #b6581e;
+            color: #b0420a;
+            font-weight: bold;
+            border-radius: 30px;
+            padding: 6px 15px;
+            cursor: pointer;
+            transition: 0.1s;
+            margin-left: 8px;
+        }
+
+        .remove-item:hover {
+            background: #b0420a;
+            color: white;
+        }
+
+        .cart-total {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: right;
+            color: #3c280f;
+            background: #e7cfaa;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .checkout-btn {
+            background: #2b6b3b;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            padding: 0.7rem 2.5rem;
+            border-radius: 60px;
+            font-weight: bold;
+            cursor: pointer;
+            border-bottom: 5px solid #154d21;
+            transition: 0.1s;
+            box-shadow: 0 6px 12px #1d4d2b80;
+        }
+
+        .checkout-btn:hover {
+            background: #1e832e;
+            border-bottom-width: 3px;
+            transform: scale(1.02);
+        }
+
+        .empty-cart-msg {
+            font-size: 1.4rem;
+            color: #5f4d35;
+            text-align: center;
+            padding: 2rem;
+            background: #faf0dd;
+            border-radius: 60px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.8rem;
+            background: #352915;
+            color: #ebd6b0;
+            font-size: 1.1rem;
+            border-top: 6px solid #b48844;
+        }
+
+        @media (max-width: 700px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            .intro-content-text h2 {
+                font-size: 2.2rem;
+            }
+            .products-grid {
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .cart-panel {
+                padding: 1rem;
+                margin: 1rem;
+            }
+            .cart-item {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- INTRO ANIMATION OVERLAY -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-content">
+            <i class="fas fa-leaf"></i>
+            <h1>पटना धूप</h1>
+            <p>35 वर्षों की सुगंध</p>
+            <div class="sub">15+ प्रकार • Patna me banti</div>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <!-- main website content (remains same, but hidden behind overlay until intro disappears) -->
+    <header class="header">
+        <div class="logo-area">
+            <h1><i class="fas fa-leaf" style="color: #e2b468;"></i> पटना धूप</h1>
+            <p><i class="fas fa-map-pin"></i> Patna me banti, 35+ varshon se <i class="fas fa-calendar-alt"></i> 1988</p>
+        </div>
+        <div class="legacy-badge">
+            <i class="fas fa-crown"></i> 35+ year legacy <i class="fas fa-certificate"></i>
+        </div>
+    </header>
+
+    <!-- Bdiya intro section (the static one) -->
+    <section class="intro-hero">
+        <div class="intro-content-text">
+            <h2>
+                <span class="highlight">परंपरा का सुगंध</span>
+                🙏🏼 35 वर्षों से पटना में बनती 
+            </h2>
+            <p>
+                <i class="fas fa-star"></i> 15+ प्रकार की अगरबत्ती  <i class="fas fa-star"></i> <br>
+                प्राकृतिक सामग्री, हाथ से बनाई, घर-आंगन महके 
+            </p>
+        </div>
+    </section>
+
+    <h2 class="section-title">🍃 हमारी सुगंधित दुनिया 🍃</h2>
+
+    <div class="products-grid" id="products-grid"></div>
+
+    <!-- Cart section -->
+    <section class="cart-panel" id="cart-section">
+        <div class="cart-header">
+            <i class="fas fa-shopping-cart fa-2x"></i>
+            <h2>आपकी टोकरी (आपका cart) </h2>
+        </div>
+        <div id="cart-items-container"></div>
+        <div id="cart-total-area" class="cart-total">
+            <span>कुल योग:</span>
+            <span id="cart-total-price">₹0</span>
+        </div>
+        <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+            <button class="checkout-btn" id="checkout-btn"><i class="fas fa-check-circle"></i> खरीदें (checkout)</button>
+        </div>
+    </section>
+
+    <footer>
+        <i class="fas fa-om"></i> Patna ki mitti ki khushbu – 35+ varshon se aapke saath <i class="fas fa-om"></i>
+    </footer>
+
+    <script>
+        (function() {
+            // ----- INTRO OVERLAY DISMISS -----
+            const overlay = document.getElementById('introOverlay');
+            function hideIntro() {
+                overlay.classList.add('hidden');
+                // optional: remove from DOM after transition to avoid blocking clicks
+                setTimeout(() => {
+                    if (overlay.classList.contains('hidden')) {
+                        overlay.style.display = 'none';  // fully remove after fade
+                    }
+                }, 1200); // match transition
+            }
+            // Auto hide after 3.5 seconds
+            setTimeout(hideIntro, 3500);
+            // Also hide on click (skip intro)
+            overlay.addEventListener('click', hideIntro);
+
+            // ----- PRODUCT DATA (unchanged) -----
+            const products = [
+                { id: 1, name: 'चन्दन स्पेशल', desc: 'शुद्ध चन्दन, Patna blend', price: 120, icon: 'fas fa-tree' },
+                { id: 2, name: 'मोगरा', desc: 'मोगरे की सुगंध, देसी', price: 90, icon: 'fas fa-seedling' },
+                { id: 3, name: 'केसर चन्दन', desc: 'केसर + चन्दन, उत्तम', price: 210, icon: 'fas fa-crown' },
+                { id: 4, name: 'गुलाब', desc: 'रूहाफजा गुलाब, मीठी खुश्बू', price: 110, icon: 'fas fa-rose' },
+                { id: 5, name: 'लोबान', desc: 'लोबान धूप, पवित्र', price: 150, icon: 'fas fa-cloud' },
+                { id: 6, name: 'उड़द बत्ती', desc: 'पारंपरिक उड़द, 35yr old recipe', price: 140, icon: 'fas fa-mortar-pestle' },
+                { id: 7, name: 'मिठा अत्तर', desc: 'इत्र जैसी महक, लंबी', price: 180, icon: 'fas fa-wine-bottle' },
+                { id: 8, name: 'हवन स्पेशल', desc: 'हवन के लिए शुद्ध', price: 200, icon: 'fas fa-fire' },
+                { id: 9, name: 'नीलगिरी', desc: 'ताजगी भरी नीलगिरी', price: 130, icon: 'fas fa-leaf' },
+                { id: 10, name: 'पचौली', desc: 'मिट्टी की खुश्बू', price: 170, icon: 'fas fa-mountain' },
+                { id: 11, name: 'संध्याकाल', desc: 'शाम की आरती के लिए', price: 160, icon: 'fas fa-sun' },
+                { id: 12, name: 'जास्मिन', desc: 'चमेली, पटना विशेष', price: 140, icon: 'fas fa-spa' },
+                { id: 13, name: 'दशहरी आम', desc: 'अनोखी महक आम', price: 190, icon: 'fas fa-apple-alt' },
+                { id: 14, name: 'कस्तूरी', desc: 'कस्तूरी मिश्रण, राजसी', price: 250, icon: 'fas fa-gem' },
+                { id: 15, name: 'वन फूल', desc: 'जंगली फूलों की सुगंध', price: 130, icon: 'fas fa-feather' },
+                { id: 16, name: 'सफेद चन्दन', desc: 'कोमल सुगंध, शांतिदायक', price: 230, icon: 'fas fa-peace' }
+            ];
+
+            let cart = JSON.parse(localStorage.getItem('patnaAgarbattiCart')) || [];
+
+            function saveCart() {
+                localStorage.setItem('patnaAgarbattiCart', JSON.stringify(cart));
+            }
+
+            const grid = document.getElementById('products-grid');
+            function renderProducts() {
+                grid.innerHTML = ''
